@@ -14,6 +14,10 @@ describe('context resolution', () => {
     let res = hb('{{a}}', {}, { a: 1 }, { b: 2 }, { c: 3 })
     expect(res).toBe('1')
   })
+  it('ignores null and undefined contexts', () => {
+    let res = hb('{{a}}', { a: 0 }, null, { b: 1 }, undefined)
+    expect(res).toBe('0')
+  })
   it('allows dot-notation', () => {
     let res = hb('{{a.b.c}}', { a: { b: { c: 1 } } })
     expect(res).toBe('1')
