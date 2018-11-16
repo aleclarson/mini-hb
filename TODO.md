@@ -3,8 +3,12 @@
 
 # Plugins
 
-- add `&&` operator
-- add `||` operator
-- add pipe operator (`a | b | c`)
-- add ternary expressions (`a ? b : c`)
-- add negation operator (`!a`)
+- `&&` operator
+- `||` operator
+- pipe operator (`a | b | c`)
+- ternary expressions (`a ? b : c`)
+- negation operator (`!a`)
+- `each` block
+- `with` block
+- `list` block
+- `if-else` block
