@@ -87,11 +87,18 @@ describe('any function call', () => {
     ]
     expect(
       values.map(value => {
-        return hb(' {{f a}} ', {
+        let res = hb(' {{f a}} ', {
           f: () => value,
         })
+        // This is required because of time zones.
+        if (value instanceof Date) {
+          expect(res).toBe(` ${value} `)
+          return value.getTime()
+        }
+        return res
       })
     ).toMatchSnapshot()
+    expect.assertions(2)
   })
 
   // TODO: Let arguments be regular expressions?
