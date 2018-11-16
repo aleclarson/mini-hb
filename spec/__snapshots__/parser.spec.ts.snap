@@ -127,18 +127,17 @@ Array [
 
 exports[`empty node 1`] = `"Invalid variable name \\"\\" on line 1"`;
 
-exports[`function call w/ primitive arguments 1`] = `
+exports[`function call with creative spacing 1`] = `
 Array [
   Object {
     "args": Array [
-      "0",
-      "-0.5",
       "1",
-      "true",
-      "false",
-      "null",
+      "2",
+      "3",
+      "4",
+      "5",
     ],
-    "end": 38,
+    "end": 25,
     "line": 1,
     "name": "fn",
     "start": 0,
@@ -171,6 +170,25 @@ Array [
 ]
 `;
 
+exports[`function call with no argument spacing 1`] = `
+Array [
+  Object {
+    "args": Array [
+      "1",
+      "2",
+      "a",
+      "b",
+      "null",
+    ],
+    "end": 19,
+    "line": 1,
+    "name": "fn",
+    "start": 0,
+    "type": undefined,
+  },
+]
+`;
+
 exports[`function call with one argument 1`] = `
 Array [
   Object {
@@ -178,6 +196,26 @@ Array [
       "z",
     ],
     "end": 10,
+    "line": 1,
+    "name": "fn",
+    "start": 0,
+    "type": undefined,
+  },
+]
+`;
+
+exports[`function call with primitive arguments 1`] = `
+Array [
+  Object {
+    "args": Array [
+      "0",
+      "-0.5",
+      "1",
+      "true",
+      "false",
+      "null",
+    ],
+    "end": 38,
     "line": 1,
     "name": "fn",
     "start": 0,

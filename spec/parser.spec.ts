@@ -74,8 +74,14 @@ describe('function call', () => {
 
     parseSnapshot(`{{ fn ${args} }}`)
   })
-  test('w/ primitive arguments', () => {
+  test('with primitive arguments', () => {
     parseSnapshot('{{ fn 0, -0.5, 1, true, false, null }}')
+  })
+  test('with no argument spacing', () => {
+    parseSnapshot('{{fn 1,2,a,b,null}}')
+  })
+  test('with creative spacing', () => {
+    parseSnapshot('{{ fn  1, 2,   3,  4, 5}}')
   })
 })
 
