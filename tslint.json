@@ -1,0 +1,7 @@
+{
+  "extends": "tslint-mango",
+  "rules": {
+    "no-commented-out-code": false,
+    "no-eval": false
+  }
+}
