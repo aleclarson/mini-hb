@@ -1,6 +1,7 @@
 {
   "extends": "tslint-mango",
   "rules": {
+    "object-literal-sort-keys": false,
     "no-commented-out-code": false,
     "no-eval": false
   }
