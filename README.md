@@ -11,7 +11,7 @@
 TypeScript successor to [mini-handlebars](https://www.npmjs.com/package/mini-handlebars)
 
 ```ts
-import hb from 'mini-hb'
+import {hb} from 'mini-hb'
 
 // Use an object literal to provide variables/functions to templates.
 let context = {
