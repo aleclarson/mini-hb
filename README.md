@@ -10,6 +10,17 @@
 
 TypeScript successor to [mini-handlebars](https://www.npmjs.com/package/mini-handlebars)
 
+## Features
+
+- 4kb minified
+- tiny API
+- template pre-parsing
+- "parse then render" in one call
+- no batteries included (blocks are just local functions)
+- syntax/context plugin system **(coming later)**
+
+## Usage
+
 ```ts
 import {hb} from 'mini-hb'
 
