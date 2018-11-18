@@ -12,7 +12,7 @@ TypeScript successor to [mini-handlebars](https://www.npmjs.com/package/mini-han
 
 ## Features
 
-- 4kb minified
+- 4kb minified (compared to ~70kb minified [handlebars](http://npmjs.com/package/handlebars))
 - tiny API
 - template pre-parsing
 - "parse then render" in one call
