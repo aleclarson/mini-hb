@@ -140,14 +140,13 @@ export function parse(template: string) {
 
       if (!block.parent) {
         let body = template.slice(block.head.end, node.start)
-        block.body =
-          node.line == block.head.line
-            ? body
-            : body
-                .replace(FIRST_LINE_EMPTY, '') // remove first line (if empty)
-                .replace(LAST_LINE_EMPTY, '') // remove last line (if empty)
-                .replace(INDENT_RE, '$1') // dedent one level
-
+        if (node.line !== block.head.line) {
+          body = body
+            .replace(FIRST_LINE_EMPTY, '') // remove first line (if empty)
+            .replace(LAST_LINE_EMPTY, '') // remove last line (if empty)
+            .replace(INDENT_RE, '$1') // dedent one level
+        }
+        block.body = body
         block.tail = node
         nodes.push(block)
       }
