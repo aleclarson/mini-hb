@@ -12,7 +12,8 @@ TypeScript successor to [mini-handlebars](https://www.npmjs.com/package/mini-han
 
 ## Features
 
-- [4kb](https://bundlephobia.com/result?p=mini-hb) minified (compared to [~70kb](https://bundlephobia.com/result?p=handlebars) minified [handlebars](http://npmjs.com/package/handlebars))
+- [~4kB](https://bundlephobia.com/result?p=mini-hb) minified (compared to [~70kB](https://bundlephobia.com/result?p=handlebars) minified [handlebars](http://npmjs.com/package/handlebars))
+- [~18kB](https://packagephobia.now.sh/result?p=mini-hb) install size (compared to [~5.8MB](https://packagephobia.now.sh/result?p=handlebars) with [handlebars](http://npmjs.com/package/handlebars))
 - tiny API
 - template pre-parsing
 - "parse then render" in one call
