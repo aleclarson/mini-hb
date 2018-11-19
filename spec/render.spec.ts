@@ -1,10 +1,5 @@
 import { hb } from '..'
 
-test('a template with no pairs of {{ and }}', () => {
-  let noop = '{a}{b}{c}'
-  expect(hb(noop)).toBe(noop)
-})
-
 describe('context resolution', () => {
   it('prefers the rightmost context', () => {
     let res = hb('{{a}}', { a: 0 }, { a: 1 }, { a: 2 })
@@ -28,6 +23,18 @@ describe('context resolution', () => {
 
     res = hb('{{a.b.c}}')
     expect(res).toBe('')
+  })
+})
+
+describe('rendering a template', () => {
+  test('with no pairs of {{ and }}', () => {
+    let noop = '{a}{b}{c}'
+    expect(hb(noop)).toBe(noop)
+  })
+  test('with a dozen references in a row', () => {
+    let res = hb('{{a}} '.repeat(12), { a: 1 })
+    expect(res.length).toBe(24)
+    expect(res).toMatchSnapshot()
   })
 })
 
@@ -153,35 +160,5 @@ describe('any block', () => {
       a: tpl => tpl,
     })
     expect(res).toBe('foo ')
-  })
-})
-
-describe('hb.bind()', () => {
-  let tpl = '{{a}}'
-  it('can bind context only', () => {
-    let render = hb.bind({ a: 1 }, { a: 2 })
-    expect(render(tpl)).toBe('2')
-    expect(render(tpl, { a: 3 })).toBe('3')
-  })
-  it('can bind the template only', () => {
-    let render = hb.bind(tpl)
-    expect(render()).toBe('')
-    expect(render({ a: 0 })).toBe('0')
-  })
-  it('can bind both template and context', () => {
-    let render = hb.bind(tpl, { a: 1 })
-    expect(render()).toBe('1')
-    expect(render({ a: 2 })).toBe('2')
-  })
-  it('defines \'template\' and \'context\' on the returned function', () => {
-    let tpl = '{{a}},{{b}}'
-    let ctx = hb({ a: 1 }, { b: 2 })
-
-    // prettier-ignore
-    expect([
-      Object.assign({}, hb.bind(tpl)),
-      Object.assign({}, hb.bind(ctx)),
-      Object.assign({}, hb.bind(tpl, ctx)),
-    ]).toMatchSnapshot()
   })
 })

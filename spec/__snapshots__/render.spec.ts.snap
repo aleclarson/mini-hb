@@ -44,44 +44,4 @@ exports[`any function call throws when the function is missing 1`] = `"No functi
 
 exports[`any function call throws when the function is missing 2`] = `"No function named \\"a.b\\" exists"`;
 
-exports[`hb.bind() defines 'template' and 'context' on the returned function 1`] = `
-Array [
-  Object {
-    "context": Context {
-      "stack": Array [],
-    },
-    "template": "{{a}},{{b}}",
-  },
-  Object {
-    "context": Context {
-      "stack": Array [
-        Context {
-          "stack": Array [
-            Object {
-              "a": 1,
-            },
-            Object {
-              "b": 2,
-            },
-          ],
-        },
-      ],
-    },
-  },
-  Object {
-    "context": Context {
-      "stack": Array [
-        Array [
-          Object {
-            "a": 1,
-          },
-          Object {
-            "b": 2,
-          },
-        ],
-      ],
-    },
-    "template": "{{a}},{{b}}",
-  },
-]
-`;
+exports[`rendering a template with a dozen references in a row 1`] = `"1 1 1 1 1 1 1 1 1 1 1 1 "`;
