@@ -46,9 +46,8 @@ export function flatMap<T, U>(
 }
 
 // https://github.com/developit/dlv
-export function dlv(obj: AnyObj, key: string | string[], def?: any) {
+export function dlv(obj: AnyObj, path: string[], def?: any) {
   let p = 0
-  key = isArray(key) ? key : key.split('.')
-  while (obj && p < key.length) obj = obj[key[p++]]
-  return obj === undefined || p < key.length ? def : obj
+  while (obj && p < path.length) obj = obj[path[p++]]
+  return obj === undefined || p < path.length ? def : obj
 }

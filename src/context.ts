@@ -13,8 +13,9 @@ export class Context {
 
   get(key: string) {
     let { stack } = this
+    let path = key.split('.')
     for (let i = stack.length; i > 0; ) {
-      let value = dlv(stack[--i], key)
+      let value = dlv(stack[--i], path)
       if (value !== undefined) {
         return value
       }
