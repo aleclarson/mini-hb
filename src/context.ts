@@ -1,14 +1,11 @@
 import { AnyObj, dlv, flatMap } from './common'
 
-const unwrapContext = (ctx: AnyObj) =>
-  ctx instanceof Context ? ctx.stack : ctx
-
 /** A stack of variable maps */
 export class Context {
   readonly stack: AnyObj[]
 
-  constructor(stack?: AnyObj[]) {
-    this.stack = stack ? flatMap(stack, unwrapContext) : []
+  constructor(contexts: AnyObj[]) {
+    this.stack = createStack(contexts)
   }
 
   get(key: string) {
@@ -24,7 +21,15 @@ export class Context {
   }
 
   concat(...contexts: AnyObj[]) {
-    let stack = this.stack.concat(flatMap(contexts, unwrapContext))
+    let stack = this.stack.concat(createStack(contexts))
     return stack.length == this.stack.length ? this : new Context(stack)
   }
 }
+
+const createStack = (contexts: AnyObj[]) =>
+  flatMap(contexts, unwrapContext).filter(isTruthy)
+
+const unwrapContext = (ctx: AnyObj) =>
+  ctx instanceof Context ? ctx.stack : ctx
+
+const isTruthy = (value: any) => !!value
