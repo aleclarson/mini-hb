@@ -30,14 +30,14 @@ export function render(
   let node: Node & Partial<Block>
   let prevNode: Node & Partial<Block> = null as any
   for (node of nodes as any) {
-    let content: any
-    if (node.args || node.head) {
-      let head = node.head || node
-      let body = node.body || ''
+    let head = node.head || node
+    let value = context.get(head.name)
 
-      // Ensure the function exists.
-      let func: RenderFn = context.get(head.name)
-      if (typeof func !== 'function') {
+    let isFunc = typeof value == 'function'
+    let isBlock = !!node.head
+
+    if (isBlock || isFunc || node.args) {
+      if (!isFunc) {
         let err = new ReferenceError(
           `No function named "${head.name}" exists`
         ) as IRenderError
@@ -55,23 +55,16 @@ export function render(
         } while (++i < args.length)
       }
 
-      content = func(body, context, ...args)
-    } else {
-      content = context.get(node.name)
+      value = value(node.body || '', context, ...args)
     }
 
     /** The static content between nodes. */
-    let slice = template.slice(
-      prevNode ? prevNode.end : 0,
-      (node.head || node).start
-    )
+    let slice = template.slice(prevNode ? prevNode.end : 0, head.start)
 
-    if (node.head) {
-      // Lines with only {{ #foo }} or {{ /foo }} are omitted from the payload.
-      slice = slice.replace(LAST_LINE_EMPTY, '')
-    }
+    // Lines with only {{ #foo }} or {{ /foo }} are omitted from the payload.
+    if (isBlock) slice = slice.replace(LAST_LINE_EMPTY, '')
 
-    payload += slice + (content !== undefined ? content : '')
+    payload += slice + (value !== undefined ? value : '')
     prevNode = node.tail || node
   }
 
