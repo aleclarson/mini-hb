@@ -5,7 +5,7 @@
 # Plugins
 
 - `@mini-hb/plugin`: plugin driver
-- `@mini-hb/js-expressions` (arbritrary JS expressions, using [is-expression](https://www.npmjs.com/package/is-expression))
+- `@mini-hb/js-expressions` (arbritrary JS expressions, using [bcx-expression-evaluator](https://github.com/buttonwoodcx/bcx-expression-evaluator))
 - `@mini-hb/each`: the each block
 - `@mini-hb/with`: the with block
 - `@mini-hb/list`: the list block
