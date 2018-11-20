@@ -44,4 +44,17 @@ exports[`any function call throws when the function is missing 1`] = `"No functi
 
 exports[`any function call throws when the function is missing 2`] = `"No function named \\"a.b\\" exists"`;
 
+exports[`function call with no arguments 1`] = `
+Array [
+  "",
+  Context {
+    "stack": Array [
+      Object {
+        "a": [Function],
+      },
+    ],
+  },
+]
+`;
+
 exports[`rendering a template with a dozen references in a row 1`] = `"1 1 1 1 1 1 1 1 1 1 1 1 "`;

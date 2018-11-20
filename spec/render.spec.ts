@@ -38,6 +38,17 @@ describe('rendering a template', () => {
   })
 })
 
+test('function call with no arguments', () => {
+  let res = hb('{{a}}', {
+    a: (...args) => {
+      expect(args).toMatchSnapshot()
+      return ''
+    },
+  })
+  expect(res).toBe('')
+  expect.assertions(2)
+})
+
 describe('any function call', () => {
   it('throws when the function is missing', () => {
     expect(() => {
